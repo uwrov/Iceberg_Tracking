@@ -13,7 +13,9 @@ def lat_lon_to_nm(lat, lon, origin_lat, origin_lon):
     return east_nm, north_nm
 
 
-def track_distance_nm( iceberg_lat, iceberg_lon, heading_deg, platform_lat, platform_lon):
+def track_distance_nm(
+    iceberg_lat, iceberg_lon, heading_deg, platform_lat, platform_lon
+):
     east_nm, north_nm = lat_lon_to_nm(
         platform_lat, platform_lon, iceberg_lat, iceberg_lon
     )
@@ -50,6 +52,7 @@ def subsea_threat(distance_nm, keel_m, water_depth_m):
     if ratio >= 0.70:
         return "YELLOW"
     return "GREEN"
+
 
 def parse_platform(value):
 
@@ -90,24 +93,27 @@ def evaluate(iceberg_lat, iceberg_lon, heading_deg, keel_m, platforms):
 
 def print_results(results):
     for row in results:
-        print(
-            f"{row['platform']}: Surface {row['surface']}, Subsea {row['subsea']}"
-        )
+        print(f"{row['platform']}: Surface {row['surface']}, Subsea {row['subsea']}")
 
 
-def parse_args(argv):
-    parser = argparse.ArgumentParser(
-        description="Calculate iceberg threat levels for MATE ROV 2026 oil platforms."
+def parse(argv):
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument(
+        "--lat", type=float, required=True, help="Iceberg latitude (deg N)"
     )
-    parser.add_argument("--lat", type=float, required=True, help="Iceberg latitude (deg N)")
-    parser.add_argument("--lon", type=float, required=True, help="Iceberg longitude (deg W)")
+    parser.add_argument(
+        "--lon", type=float, required=True, help="Iceberg longitude (deg W)"
+    )
     parser.add_argument(
         "--heading",
         type=float,
         required=True,
         help="Iceberg heading in degrees from true north, clockwise",
     )
-    parser.add_argument("--keel", type=float, required=True, help="Iceberg keel depth (m)")
+    parser.add_argument(
+        "--keel", type=float, required=True, help="Iceberg keel depth (m)"
+    )
     parser.add_argument(
         "--platform",
         action="append",
@@ -123,7 +129,7 @@ def parse_args(argv):
 
 
 def main(argv=None):
-    args = parse_args(argv or sys.argv[1:])
+    args = parse(argv)
 
     if len(args.platform) != PLATFORM_COUNT:
         print(

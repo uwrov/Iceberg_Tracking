@@ -2,6 +2,23 @@ Terminal tool for MATE ROV 2026 Explorer Task 2.2 — iceberg tracking. Pass ice
 
 Python 3.6+ (No pip libs used)
 
+For coordinates given in DMS x°y°z, convert to decimal degrees:
+- Ex: 45°30'15"N → 45 + (30/60) + (15/3600) = 45.5042°N
+Use the DMS to decimal converter if needed, seperating each subpart by a comma (ex: "45,30,15").
+
+Usage: 
+Being with the iceberg specifications:
+(seperate each argument with a comma)
+--lat 
+--lon
+--heading
+--keel
+
+followed by four platform specifications:
+--platform "name",latitude,longitude,ocean_depth_m
+
+Ex of arguments.  --lat 47.39 --lon -48.37, --heading 158 --keel 99 --platform hibernia,46.75,-48.7819,-78 --platform searose,46.78,48.146,-107 --platform terranova,46.4,-48.4,-91 --platform hebron,46.54,-48.518,-93
+
 All arguments are required. Provide exactly four --platform entries.
 
 Each --platform value is name,latitude,longitude,ocean_depth_m. Ocean depth may be positive or negative (as on some map sheets); negative values are converted to positive meters.
