@@ -4,11 +4,27 @@ Python 3.6+ (No pip libs used)
 
 For coordinates given in DMS x°y°z, convert to decimal degrees:
 - Ex: 45°30'15"N → 45 + (30/60) + (15/3600) = 45.5042°N
-Use the DMS to decimal converter if needed, seperating each subpart by a comma (ex: "45,30,15").
+Use the DMS to decimal converter if needed, separating each subpart by a comma (ex: "45,30,15"). 
+Currently, does two in one requiring the user the separate the two coordinates with a space 
 
+map_rendering (CLI input, matplotlib output)
+
+Follow the provided prompts. The platforms are hardcoded, so only need to input iceberg.
+
+Will output two plots, one for platforms, and one for subsea assets corresponding to the platforms.
+
+
+
+
+
+
+
+
+(DEPRECATED)
+threat_calculator.py (Command line I/O)
 Usage: 
 Being with the iceberg specifications:
-(seperate each argument with a comma)
+(separate each argument with a comma)
 --lat 
 --lon
 --heading

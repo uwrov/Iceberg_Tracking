@@ -95,8 +95,8 @@ def print_results(results):
     for row in results:
         print(f"{row['platform']}: Surface {row['surface']}, Subsea {row['subsea']}")
 
-
-def parse(argv):
+#For command line input
+def parse_CLI(argv):
     parser = argparse.ArgumentParser()
     
     parser.add_argument(
@@ -129,7 +129,8 @@ def parse(argv):
 
 
 def main(argv=None):
-    args = parse(argv)
+
+    args = parse_CLI(argv)
 
     if len(args.platform) != PLATFORM_COUNT:
         print(
