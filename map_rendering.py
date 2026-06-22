@@ -7,12 +7,12 @@ import DMS_to_DD
 #manually input iceberg coordinates 
 
 convert = input("Are iceberg coordinates in DMS? (yes/no)")
-if convert == "yes" or "yes":
+if convert == "yes" or convert == "yes":
     lat,lon = DMS_to_DD.convert(input("Separate the three terms by commas, dont include N/W, use a space to separate the longitude form latitude"))
 else:
-    lat,lon = [int(p) for p in input("separate the two decimals with a space").split(" ")]    
+    lat,lon = [float(p) for p in input("separate the two decimals with a space").split(" ")]    
 head = int(input("heading (as integer)"))
-keel = int(input("keel depth (in meters)"))
+keel = -1*abs(int(input("keel depth (in meters)")))
 
 
 #plot data, first entry is the iceberg
